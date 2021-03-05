@@ -97,43 +97,5 @@ def tes_return_json():
     return (df.to_json()) # mengembalikan dataframe dalam bentuk json
 
 
-#task endpoint
-@app.route('/get_entities', methods=['POST'])
-def get_entities():
-    
-    # ambil data dari json yang diterima endpoint
-    data = request.get_json()
-    
-    # ambil nilai teks dari data
-    text = data['text']
-    
-    # modelkan teks dengan model scipy 
-    doc = nlp(text)
-    
-    # membuat pasangan label dan nilai entitas
-    d = [(ent.label_, ent.text) for ent in doc.ents]
-
-    # transform pasangan label menjadi dataframe 
-    df = pd.DataFrame(d, columns=['category', 'value'])
-    
-    return (df.to_json())
-
-
-#task bonus
-@app.route('/get_entities_normalized', methods=['POST'])
-def get_entities_normalizedfoo():
-    data = request.get_json() # load received json data
-    text = data['text'] # extract 'text' element 
-    doc = nlp(text) #
-    d = [(ent.label_, ent.text) for ent in doc.ents]
-    df = pd.DataFrame(d, columns=['category', 'value'])
-    dictionary = {}
-    for i in df['category'].unique():
-        values = df.query(f"category == '{i}' ")['value'].to_list()
-        dictionary[i] = values
-    return json.dumps(dictionary)
-
-
-
 if __name__ == '__main__':
     app.run(debug=True)
