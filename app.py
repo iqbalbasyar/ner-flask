@@ -7,7 +7,7 @@ import en_core_web_md
 import json 
 
 # @TASK : Load model bahasa 
-nlp = en_core_web_md.load()
+nlp = ???
 # END OF TASK 
 
 app = Flask(__name__)
@@ -29,10 +29,10 @@ def process():
                 df = pd.DataFrame(d, columns=['category', 'value'])
 
                 # @TASK : COMPLETE THE FOLLOWING CODES
-                ORG_named_entity = df.query("category == 'ORG'")['value'] # Subset semua entitas dengan kategori 'ORG'
-                PERSON_named_entity = df.query("category == 'PERSON'")['value'] # Subset semua entitas dengan kategori 'PERSON'
-                GPE_named_entity = df.query("category == 'GPE'")['value'] # Subset semua entitas dengan kategori 'GPE'
-                MONEY_named_entity = df.query("category == 'MONEY'")['value'] # Subset semua entitas dengan kategori 'MONEY'
+                ORG_named_entity =  ???# Subset semua entitas dengan kategori 'ORG'
+                PERSON_named_entity =  ???# Subset semua entitas dengan kategori 'PERSON'
+                GPE_named_entity =  ???# Subset semua entitas dengan kategori 'GPE'
+                MONEY_named_entity = ???# Subset semua entitas dengan kategori 'MONEY'
                 # END OF TASK 
 
             if choice == 'organization':
